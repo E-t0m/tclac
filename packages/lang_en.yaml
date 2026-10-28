@@ -1,0 +1,23 @@
+# English option texts for the select entities from core.yaml.
+# Usage: add this file after packages/core.yaml in the files list.
+
+substitutions:
+  vswing_option_0: "Top to bottom"
+  vswing_option_1: "Upper half"
+  vswing_option_2: "Lower half"
+  hswing_option_0: "Left to right"
+  hswing_option_1: "Left side"
+  hswing_option_2: "Center"
+  hswing_option_3: "Right side"
+  vfixing_option_0: "Last position"
+  vfixing_option_1: "Fully up"
+  vfixing_option_2: "Upper half"
+  vfixing_option_3: "Middle"
+  vfixing_option_4: "Lower half"
+  vfixing_option_5: "Fully down"
+  hfixing_option_0: "Last position"
+  hfixing_option_1: "Fully left"
+  hfixing_option_2: "Left half"
+  hfixing_option_3: "Middle"
+  hfixing_option_4: "Right half"
+  hfixing_option_5: "Fully right"

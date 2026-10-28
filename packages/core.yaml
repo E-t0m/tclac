@@ -14,6 +14,27 @@ external_components:
 # Конфигурация ESPHome
 
 substitutions:
+  # Тексты вариантов выпадающих списков, можно переопределить в своем конфиге
+  # (английский перевод: packages/lang_en.yaml)
+  vswing_option_0: "Сверху вниз"
+  vswing_option_1: "В верхней половине"
+  vswing_option_2: "В нижней половине"
+  hswing_option_0: "Слева направо"
+  hswing_option_1: "В левой части"
+  hswing_option_2: "В центре"
+  hswing_option_3: "В правой части"
+  vfixing_option_0: "Последнее положение"
+  vfixing_option_1: "До упора вверх"
+  vfixing_option_2: "В верхней половине"
+  vfixing_option_3: "По середине"
+  vfixing_option_4: "В нижней половине"
+  vfixing_option_5: "До упора вниз"
+  hfixing_option_0: "Последнее положение"
+  hfixing_option_1: "До упора влево"
+  hfixing_option_2: "В левой половине"
+  hfixing_option_3: "По середине"
+  hfixing_option_4: "В правой половине"
+  hfixing_option_5: "До упора вправо"
   boot_actions: !lambda |- # Пустые действия по умолчанию
 
 esphome:
@@ -212,9 +233,9 @@ select:
     id: vswing
     entity_category: config
     options:
-      - "Сверху вниз"
-      - "В верхней половине"
-      - "В нижней половине"
+      - "${vswing_option_0}"
+      - "${vswing_option_1}"
+      - "${vswing_option_2}"
     optimistic: true
     restore_value: true
     on_value:
@@ -234,10 +255,10 @@ select:
     id: hswing
     entity_category: config
     options:
-      - "Слева направо"
-      - "В левой части"
-      - "В центре"
-      - "В правой части"
+      - "${hswing_option_0}"
+      - "${hswing_option_1}"
+      - "${hswing_option_2}"
+      - "${hswing_option_3}"
     optimistic: true
     restore_value: true
     on_value:
@@ -259,12 +280,12 @@ select:
     id: vfixing
     entity_category: config
     options:
-      - "Последнее положение"
-      - "До упора вверх"
-      - "В верхней половине"
-      - "По середине"
-      - "В нижней половине"
-      - "До упора вниз"
+      - "${vfixing_option_0}"
+      - "${vfixing_option_1}"
+      - "${vfixing_option_2}"
+      - "${vfixing_option_3}"
+      - "${vfixing_option_4}"
+      - "${vfixing_option_5}"
     optimistic: true
     restore_value: true
     on_value:
@@ -290,12 +311,12 @@ select:
     id: hfixing
     entity_category: config
     options:
-      - "Последнее положение"
-      - "До упора влево"
-      - "В левой половине"
-      - "По середине"
-      - "В правой половине"
-      - "До упора вправо"
+      - "${hfixing_option_0}"
+      - "${hfixing_option_1}"
+      - "${hfixing_option_2}"
+      - "${hfixing_option_3}"
+      - "${hfixing_option_4}"
+      - "${hfixing_option_5}"
     optimistic: true
     restore_value: true
     on_value:
