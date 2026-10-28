@@ -16,6 +16,7 @@ If you don't understand Russian, use a translator. It will be easier for you to 
 - Daichi DA35EVQ1-1/DF35EV1-1
 - Dantex RK-12SATI/RK-12SATIE
 - Ecostar Radium KVS-RAD09CH
+- Euromate 482255 (родной модуль Tuya TYWE1S на плате TYJW2, ESP8266: UART на GPIO15/GPIO13)
 - iFFALCON F1 18
 - Royal Clima Gloria Inverter
 - Royal Clima Pandora RC-PDC28HN
@@ -32,7 +33,6 @@ If you don't understand Russian, use a translator. It will be easier for you to 
 - TCL TAC-12CHSA/TPGI
 - TCL TAC-XAL24I
 - TCL TPG31IHB
-- Euromate 482255 (родной модуль Tuya TYWE1S на плате TYJW2, ESP8266: UART на GPIO15/GPIO13)
 
 Компонент поддерживает длину сообщений от кондиционера в 61, 65 и 68 байт, однако, полноценно проверялся только с 61 байтовыми сообщениями.
 
