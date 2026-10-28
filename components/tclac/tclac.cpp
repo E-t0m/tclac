@@ -165,7 +165,7 @@ void tclacClimate::update() {
 	// после опроса кондиционер начнёт отвечать — командные кадры подождут
 	this->poll_sent_ms_ = millis();
 	//auto raw = tclacClimate::getHex(poll, sizeof(poll));
-	ESP_LOGD("TCL", "chek status sended");
+	ESP_LOGD("TCL", "Status request sent");
 	tclacClimate::dataShow(1,0);
 }
 
@@ -349,10 +349,10 @@ void tclacClimate::takeControl() {
 	// ВНИМАНИЕ! При выключении дисплея кондиционер сам принудительно переходит в автоматический режим!
 	
 	if ((display_status_) && (mode != climate::CLIMATE_MODE_OFF)){
-		ESP_LOGD("TCL", "Dispaly turn ON");
+		ESP_LOGD("TCL", "Display turn ON");
 		dataTX[7] += 0b01000000;
 	} else {
-		ESP_LOGD("TCL", "Dispaly turn OFF");
+		ESP_LOGD("TCL", "Display turn OFF");
 		dataTX[7] += 0b00000000;
 	}
 		
@@ -515,11 +515,11 @@ void tclacClimate::takeControl() {
 			break;
 		case VerticalSwingDirection::UPSIDE:
 			dataTX[32]	+= 0b00010000;
-			ESP_LOGD("TCL", "Vertical swing: upper");
+			ESP_LOGD("TCL", "Vertical swing: upper half");
 			break;
 		case VerticalSwingDirection::DOWNSIDE:
 			dataTX[32]	+= 0b00011000;
-			ESP_LOGD("TCL", "Vertical swing: downer");
+			ESP_LOGD("TCL", "Vertical swing: lower half");
 			break;
 	}
 	// Устанавливаем режим для качания горизонтальных заслонок
@@ -530,7 +530,7 @@ void tclacClimate::takeControl() {
 			break;
 		case HorizontalSwingDirection::LEFTSIDE:
 			dataTX[33]	+= 0b00010000;
-			ESP_LOGD("TCL", "Horizontal swing: lefter");
+			ESP_LOGD("TCL", "Horizontal swing: left side");
 			break;
 		case HorizontalSwingDirection::CENTER:
 			dataTX[33]	+= 0b00011000;
@@ -538,7 +538,7 @@ void tclacClimate::takeControl() {
 			break;
 		case HorizontalSwingDirection::RIGHTSIDE:
 			dataTX[33]	+= 0b00100000;
-			ESP_LOGD("TCL", "Horizontal swing: righter");
+			ESP_LOGD("TCL", "Horizontal swing: right side");
 			break;
 	}
 	// Устанавливаем положение фиксации вертикальной заслонки
@@ -549,11 +549,11 @@ void tclacClimate::takeControl() {
 			break;
 		case AirflowVerticalDirection::MAX_UP:
 			dataTX[32]	+= 0b00000001;
-			ESP_LOGD("TCL", "Vertical fix: up");
+			ESP_LOGD("TCL", "Vertical fix: max up");
 			break;
 		case AirflowVerticalDirection::UP:
 			dataTX[32]	+= 0b00000010;
-			ESP_LOGD("TCL", "Vertical fix: upper");
+			ESP_LOGD("TCL", "Vertical fix: up");
 			break;
 		case AirflowVerticalDirection::CENTER:
 			dataTX[32]	+= 0b00000011;
@@ -561,11 +561,11 @@ void tclacClimate::takeControl() {
 			break;
 		case AirflowVerticalDirection::DOWN:
 			dataTX[32]	+= 0b00000100;
-			ESP_LOGD("TCL", "Vertical fix: downer");
+			ESP_LOGD("TCL", "Vertical fix: down");
 			break;
 		case AirflowVerticalDirection::MAX_DOWN:
 			dataTX[32]	+= 0b00000101;
-			ESP_LOGD("TCL", "Vertical fix: down");
+			ESP_LOGD("TCL", "Vertical fix: max down");
 			break;
 	}
 	// Устанавливаем положение фиксации горизонтальных заслонок
@@ -576,11 +576,11 @@ void tclacClimate::takeControl() {
 			break;
 		case AirflowHorizontalDirection::MAX_LEFT:
 			dataTX[33]	+= 0b00000001;
-			ESP_LOGD("TCL", "Horizontal fix: left");
+			ESP_LOGD("TCL", "Horizontal fix: max left");
 			break;
 		case AirflowHorizontalDirection::LEFT:
 			dataTX[33]	+= 0b00000010;
-			ESP_LOGD("TCL", "Horizontal fix: lefter");
+			ESP_LOGD("TCL", "Horizontal fix: left");
 			break;
 		case AirflowHorizontalDirection::CENTER:
 			dataTX[33]	+= 0b00000011;
@@ -588,11 +588,11 @@ void tclacClimate::takeControl() {
 			break;
 		case AirflowHorizontalDirection::RIGHT:
 			dataTX[33]	+= 0b00000100;
-			ESP_LOGD("TCL", "Horizontal fix: righter");
+			ESP_LOGD("TCL", "Horizontal fix: right");
 			break;
 		case AirflowHorizontalDirection::MAX_RIGHT:
 			dataTX[33]	+= 0b00000101;
-			ESP_LOGD("TCL", "Horizontal fix: right");
+			ESP_LOGD("TCL", "Horizontal fix: max right");
 			break;
 	}
 
