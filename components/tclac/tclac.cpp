@@ -361,26 +361,32 @@ void tclacClimate::takeControl() {
 		case climate::CLIMATE_MODE_OFF:
 			dataTX[7] += 0b00000000;
 			dataTX[8] += 0b00000000;
+			ESP_LOGD("TCL", "Mode: OFF");
 			break;
 		case climate::CLIMATE_MODE_HEAT_COOL:
 			dataTX[7] += 0b00000100;
 			dataTX[8] += 0b00001000;
+			ESP_LOGD("TCL", "Mode: AUTO");
 			break;
 		case climate::CLIMATE_MODE_COOL:
 			dataTX[7] += 0b00000100;
 			dataTX[8] += 0b00000011;	
+			ESP_LOGD("TCL", "Mode: COOL");
 			break;
 		case climate::CLIMATE_MODE_DRY:
 			dataTX[7] += 0b00000100;
 			dataTX[8] += 0b00000010;	
+			ESP_LOGD("TCL", "Mode: DRY");
 			break;
 		case climate::CLIMATE_MODE_FAN_ONLY:
 			dataTX[7] += 0b00000100;
 			dataTX[8] += 0b00000111;	
+			ESP_LOGD("TCL", "Mode: FAN_ONLY");
 			break;
 		case climate::CLIMATE_MODE_HEAT:
 			dataTX[7] += 0b00000100;
 			dataTX[8] += 0b00000001;	
+			ESP_LOGD("TCL", "Mode: HEAT");
 			break;
 		case climate::CLIMATE_MODE_AUTO:
 			// Этот режим ESPHome не используется компонентом TCLAC.
@@ -394,34 +400,42 @@ void tclacClimate::takeControl() {
 			case climate::CLIMATE_FAN_AUTO:
 				dataTX[8]	+= 0b00000000;
 				dataTX[10]	+= 0b00000000;
+				ESP_LOGD("TCL", "Fan: AUTO");
 				break;
 			case climate::CLIMATE_FAN_QUIET:
 				dataTX[8]	+= 0b10000000;
 				dataTX[10]	+= 0b00000000;
+				ESP_LOGD("TCL", "Fan: QUIET (mute)");
 				break;
 			case climate::CLIMATE_FAN_LOW:
 				dataTX[8]	+= 0b00000000;
 				dataTX[10]	+= 0b00000001;
+				ESP_LOGD("TCL", "Fan: LOW (1)");
 				break;
 			case climate::CLIMATE_FAN_MIDDLE:
 				dataTX[8]	+= 0b00000000;
 				dataTX[10]	+= 0b00000110;
+				ESP_LOGD("TCL", "Fan: MIDDLE (2)");
 				break;
 			case climate::CLIMATE_FAN_MEDIUM:
 				dataTX[8]	+= 0b00000000;
 				dataTX[10]	+= 0b00000011;
+				ESP_LOGD("TCL", "Fan: MEDIUM (3)");
 				break;
 			case climate::CLIMATE_FAN_HIGH:
 				dataTX[8]	+= 0b00000000;
 				dataTX[10]	+= 0b00000111;
+				ESP_LOGD("TCL", "Fan: HIGH (4)");
 				break;
 			case climate::CLIMATE_FAN_FOCUS:
 				dataTX[8]	+= 0b00000000;
 				dataTX[10]	+= 0b00000101;
+				ESP_LOGD("TCL", "Fan: FOCUS (5)");
 				break;
 			case climate::CLIMATE_FAN_DIFFUSE:
 				dataTX[8]	+= 0b01000000;
 				dataTX[10]	+= 0b00000000;
+				ESP_LOGD("TCL", "Fan: DIFFUSE (turbo)");
 				break;
 			case climate::CLIMATE_FAN_ON:
 			case climate::CLIMATE_FAN_OFF:
@@ -598,6 +612,7 @@ void tclacClimate::takeControl() {
 
 	// Установка температуры
 	dataTX[9] = target_temperature_set;
+	ESP_LOGD("TCL", "Target temperature: %d", (int) target_temperature);
 		
 	// Собираем массив байт для отправки в кондиционер
 	dataTX[0] = 0xBB;	//стартовый байт заголовка
